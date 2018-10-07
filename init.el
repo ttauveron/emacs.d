@@ -5,6 +5,7 @@
 (tool-bar-mode   -1)
 (tooltip-mode    -1)
 (menu-bar-mode   -1)
+(global-linum-mode t)
 
 ;; Package configs
 (require 'package)
@@ -82,7 +83,6 @@
   (autopair-global-mode 1)
   (setq autopair-autowrap t)
   )
-
 
 
 (custom-set-variables
