@@ -67,12 +67,20 @@
   helm-autoresize-min-height 20)
   :config
   (helm-mode 1))
+
+(use-package undo-tree
+  :ensure t)
+
+
+
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (ace-window use-package helm doom-themes))))
+ '(package-selected-packages (quote (undo-tree ace-window use-package helm doom-themes))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
