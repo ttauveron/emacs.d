@@ -60,6 +60,10 @@
 (setq confirm-nonexistent-file-or-buffer nil)
 
 
+;; Making tooltips appear in the echo area
+(tooltip-mode -1)
+(setq tooltip-use-echo-area t)
+
 
 
 ;;(windmove-default-keybindings)
@@ -99,6 +103,10 @@
   (autopair-global-mode 1)
   (setq autopair-autowrap t)
   )
+
+
+
+
 
 
 (custom-set-variables
