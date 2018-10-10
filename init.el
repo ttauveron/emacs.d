@@ -7,6 +7,10 @@
 (menu-bar-mode   -1)
 (global-linum-mode t)
 
+(setq inhibit-startup-message t
+      inhibit-startup-echo-area-message t)
+
+
 ;; Package configs
 (require 'package)
 (setq package-enable-at-startup nil)
@@ -49,6 +53,14 @@
 (ido-mode 1)
 
 ;;(setq ido-use-filename-at-point 'guess)
+
+;; getting rid of the “yes or no” prompt and replace it with “y or n”:
+(fset 'yes-or-no-p 'y-or-n-p)
+
+(setq confirm-nonexistent-file-or-buffer nil)
+
+
+
 
 ;;(windmove-default-keybindings)
 
