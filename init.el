@@ -44,7 +44,11 @@
 (global-hl-line-mode t)
 
 ;; auto completion
-(ido-mode t)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
+
+;;(setq ido-use-filename-at-point 'guess)
 
 ;;(windmove-default-keybindings)
 
