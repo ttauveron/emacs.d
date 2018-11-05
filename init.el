@@ -68,7 +68,9 @@
   helm-autoresize-min-height 20)
   :config
   (helm-mode 1)
-  (global-set-key (kbd "C-x b") 'helm-buffers-list) )
+  (global-set-key (kbd "C-x b") 'helm-buffers-list)
+  (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+  (global-set-key (kbd "C-x C-f") 'helm-find-files))
 
 (use-package undo-tree
   :ensure t)
@@ -85,8 +87,19 @@
   (setq autopair-autowrap t)
   )
 
-
-
+(use-package helm-swoop
+  :ensure t
+  :config
+  (global-set-key (kbd "M-i") 'helm-swoop)
+  (global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
+  (global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
+  (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
+  (define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
+  (define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
+  ;; If this value is t, split window inside the current window
+  (setq helm-swoop-split-with-multiple-windows t)
+  )
+	
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
