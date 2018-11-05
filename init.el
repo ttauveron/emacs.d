@@ -70,7 +70,8 @@
   (helm-mode 1)
   (global-set-key (kbd "C-x b") 'helm-buffers-list)
   (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-  (global-set-key (kbd "C-x C-f") 'helm-find-files))
+;;  (global-set-key (kbd "C-x C-f") 'helm-find-files)
+  )
 
 (use-package undo-tree
   :ensure t)
@@ -100,6 +101,15 @@
   (setq helm-swoop-split-with-multiple-windows t)
   )
 	
+(use-package docker-tramp
+  :ensure t)
+
+(use-package helm-tramp
+  :ensure t
+  :config
+  (define-key global-map (kbd "C-c s") 'helm-tramp))
+
+
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
