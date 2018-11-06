@@ -126,7 +126,12 @@
    )
   )
 
-
+(use-package drag-stuff
+  :ensure t
+  :config
+   (drag-stuff-global-mode 1)
+   (drag-stuff-define-keys)
+   )
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
