@@ -44,7 +44,7 @@
 (global-hl-line-mode t)
 
 ;; auto completion
-(ido-mode t)
+;;(ido-mode t)
 
 ;;(windmove-default-keybindings)
 
@@ -63,23 +63,32 @@
   helm-candidate-number-list 150
   helm-split-window-in-side-p t
   helm-move-to-line-cycle-in-source t
-  helm-echo-input-in-header-line t
+  helm-display-header-line t
+  helm-echo-input-in-header-line nil
   helm-autoresize-max-height 0
-  helm-autoresize-min-height 20)
+  helm-autoresize-min-height 20
+  )
+  :bind
+  (("C-x b" . helm-buffers-list)
+   ("M-y" . helm-show-kill-ring)
+   ("M-x" . helm-M-x)
+   )
   :config
   (helm-mode 1)
-  (global-set-key (kbd "C-x b") 'helm-buffers-list)
-  (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 ;;  (global-set-key (kbd "C-x C-f") 'helm-find-files)
   )
+
 
 (use-package undo-tree
   :ensure t)
 
 (use-package magit
   :ensure t
-  :config
-  (global-set-key (kbd "C-x g") 'magit-status))
+  :bind
+  (
+   ("C-x g" . magit-status)
+   )
+  )
 
 (use-package autopair
   :ensure t
@@ -90,15 +99,20 @@
 
 (use-package helm-swoop
   :ensure t
-  :config
-  (global-set-key (kbd "M-i") 'helm-swoop)
-  (global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
-  (global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
-  (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
-  (define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
-  (define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
+  :bind
+  (
+   ("M-i" . helm-swoop)
+   ("M-I" . helm-swoop-back-to-last-point)
+   ("C-c M-i" . helm-multi-swoop)
+   ("C-x M-i" . helm-multi-swoop-all)
+   (:map helm-swoop-map
+	 ("C-r" . helm-previous-line)
+	 ("C-s" . helm-next-line)
+	 )
+   )
+   :config
   ;; If this value is t, split window inside the current window
-  (setq helm-swoop-split-with-multiple-windows t)
+   (setq helm-swoop-split-with-multiple-windows t)
   )
 	
 (use-package docker-tramp
@@ -106,8 +120,11 @@
 
 (use-package helm-tramp
   :ensure t
-  :config
-  (define-key global-map (kbd "C-c s") 'helm-tramp))
+  :bind
+  (
+   ("C-c s" . helm-tramp)
+   )
+  )
 
 
 
