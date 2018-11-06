@@ -48,23 +48,7 @@
 (global-hl-line-mode t)
 
 ;; auto completion
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
-
-;;(setq ido-use-filename-at-point 'guess)
-
-;; getting rid of the “yes or no” prompt and replace it with “y or n”:
-(fset 'yes-or-no-p 'y-or-n-p)
-
-(setq confirm-nonexistent-file-or-buffer nil)
-
-
-;; Making tooltips appear in the echo area
-(tooltip-mode -1)
-(setq tooltip-use-echo-area t)
-
-
+;;(ido-mode t)
 
 ;;(windmove-default-keybindings)
 
@@ -83,19 +67,32 @@
   helm-candidate-number-list 150
   helm-split-window-in-side-p t
   helm-move-to-line-cycle-in-source t
-  helm-echo-input-in-header-line t
+  helm-display-header-line t
+  helm-echo-input-in-header-line nil
   helm-autoresize-max-height 0
-  helm-autoresize-min-height 20)
+  helm-autoresize-min-height 20
+  )
+  :bind
+  (("C-x b" . helm-buffers-list)
+   ("M-y" . helm-show-kill-ring)
+   ("M-x" . helm-M-x)
+   )
   :config
-  (helm-mode 1))
+  (helm-mode 1)
+;;  (global-set-key (kbd "C-x C-f") 'helm-find-files)
+  )
+
 
 (use-package undo-tree
   :ensure t)
 
 (use-package magit
   :ensure t
-  :config
-  (global-set-key (kbd "C-x g") 'magit-status))
+  :bind
+  (
+   ("C-x g" . magit-status)
+   )
+  )
 
 (use-package autopair
   :ensure t
@@ -104,22 +101,47 @@
   (setq autopair-autowrap t)
   )
 
+(use-package helm-swoop
+  :ensure t
+  :bind
+  (
+   ("M-i" . helm-swoop)
+   ("M-I" . helm-swoop-back-to-last-point)
+   ("C-c M-i" . helm-multi-swoop)
+   ("C-x M-i" . helm-multi-swoop-all)
+   (:map helm-swoop-map
+	 ("C-r" . helm-previous-line)
+	 ("C-s" . helm-next-line)
+	 )
+   )
+   :config
+  ;; If this value is t, split window inside the current window
+   (setq helm-swoop-split-with-multiple-windows t)
+  )
+	
+(use-package docker-tramp
+  :ensure t)
 
+(use-package helm-tramp
+  :ensure t
+  :bind
+  (
+   ("C-c s" . helm-tramp)
+   )
+  )
 
+(use-package drag-stuff
+  :ensure t
+  :config
+   (drag-stuff-global-mode 1)
+   (drag-stuff-define-keys)
+   )
 
+(use-package flycheck
+  :ensure t
+  :config
+  (global-flycheck-mode)
+  )
 
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (autopair magit undo-tree ace-window use-package helm doom-themes))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
