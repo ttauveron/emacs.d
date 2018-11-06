@@ -133,6 +133,11 @@
    (drag-stuff-define-keys)
    )
 
+(use-package flycheck
+  :ensure t
+  :config
+  (global-flycheck-mode)
+  )
+
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
-
