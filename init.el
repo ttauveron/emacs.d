@@ -122,8 +122,19 @@
 (use-package docker-tramp
   :ensure t)
 
+(use-package fill-column-indicator
+  :ensure t
+  )
+
 (use-package dockerfile-mode
-  :ensure t)
+  :ensure t
+  :config
+  (add-hook 'dockerfile-mode-hook
+            (lambda ()
+              (interactive)
+              (fci-mode t)
+              (set-fill-column 80)))
+  )
 
 (use-package helm-tramp
   :ensure t
@@ -145,6 +156,8 @@
   :config
   (global-flycheck-mode)
   )
+
+
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
