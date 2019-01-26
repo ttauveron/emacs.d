@@ -157,6 +157,9 @@
   (global-flycheck-mode)
   )
 
+(use-package groovy-mode
+  :ensure t)
+
 
 
 (setq custom-file "~/.emacs.d/custom.el")
