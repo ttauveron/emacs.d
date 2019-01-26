@@ -136,6 +136,9 @@
               (set-fill-column 80)))
   )
 
+(use-package docker-compose-mode
+  :ensure t)
+
 (use-package helm-tramp
   :ensure t
   :bind
@@ -153,7 +156,7 @@
 
 (use-package flycheck
   :ensure t
-  :config
+  :init
   (global-flycheck-mode)
   )
 
