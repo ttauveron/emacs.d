@@ -170,8 +170,6 @@
 (use-package groovy-mode
   :ensure t)
 
-(use-package dockerfile-mode
-  :ensure t)
 (use-package yaml-mode
   :ensure t)
 
