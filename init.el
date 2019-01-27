@@ -163,6 +163,18 @@
 (use-package groovy-mode
   :ensure t)
 
+(use-package dockerfile-mode
+  :ensure t)
+(use-package yaml-mode
+  :ensure t)
+
+(use-package expand-region
+  :ensure t
+  :bind
+  (
+   ("C-=" . er/expand-region)
+   )
+  )
 
 
 (setq custom-file "~/.emacs.d/custom.el")
