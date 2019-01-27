@@ -4,12 +4,19 @@
 (scroll-bar-mode -1)
 (tool-bar-mode   -1)
 (tooltip-mode    -1)
-(menu-bar-mode   -1)
+;; (menu-bar-mode   -1)
 (global-linum-mode t)
 
 (setq inhibit-startup-message t
       inhibit-startup-echo-area-message t)
 
+(setq tab-always-indent 'complete)
+(add-to-list 'completion-styles 'initials t)
+
+;; don't allow suspending emacs shortcut in GUI mode
+(when (display-graphic-p)
+  (global-unset-key (kbd "C-z"))
+  )
 
 ;; Package configs
 (require 'package)
