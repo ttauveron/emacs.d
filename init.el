@@ -184,6 +184,12 @@
    )
   )
 
+(use-package rainbow-delimiters
+  :ensure t
+  :config
+  (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
+  )
+
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
