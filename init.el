@@ -13,13 +13,14 @@
 (setq tab-always-indent 'complete)
 (add-to-list 'completion-styles 'initials t)
 
+(set-cursor-color "#c10000")
+(setq-default cursor-type 'bar)
+
 ;; don't allow suspending emacs shortcut in GUI mode
 (when (display-graphic-p)
   (global-unset-key (kbd "C-z"))
   )
 
-(setq cursor-type 'bar)
-(set-cursor-color "#c10000")
 
 ;; Package configs
 (require 'package)
@@ -56,6 +57,7 @@
 
 ;; Highlight current line
 (global-hl-line-mode t)
+
 
 ;; auto completion
 ;;(ido-mode t)
@@ -187,7 +189,22 @@
 (use-package rainbow-delimiters
   :ensure t
   :config
+  (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
   (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
+  )
+
+(use-package recentf
+  :ensure t
+  :config
+  (recentf-mode 1)
+  :bind
+  ("\C-xf" . recentf-open-files)
+  )
+
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook)
   )
 
 
