@@ -19,6 +19,7 @@
   )
 
 (setq cursor-type 'bar)
+(set-cursor-color "#c10000")
 
 ;; Package configs
 (require 'package)
