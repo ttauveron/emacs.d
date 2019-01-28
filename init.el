@@ -18,6 +18,8 @@
   (global-unset-key (kbd "C-z"))
   )
 
+(setq cursor-type 'bar)
+
 ;; Package configs
 (require 'package)
 (setq package-enable-at-startup nil)
