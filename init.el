@@ -1,3 +1,4 @@
+
 (setq debug-on-error t)
 
 ;; Minimal UI
@@ -204,6 +205,8 @@
 (use-package dashboard
   :ensure t
   :config
+  (setq dashboard-items '((recents  . 10)
+                            (bookmarks . 10)))
   (dashboard-setup-startup-hook)
   )
 
