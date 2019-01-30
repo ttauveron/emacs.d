@@ -1,4 +1,6 @@
 
+
+
 (setq debug-on-error t)
 
 ;; Minimal UI
@@ -14,7 +16,7 @@
 (setq tab-always-indent 'complete)
 (add-to-list 'completion-styles 'initials t)
 
-(set-cursor-color "#c10000")
+(set-cursor-color "#c90e30")
 (setq-default cursor-type 'bar)
 
 ;; don't allow suspending emacs shortcut in GUI mode
@@ -226,7 +228,31 @@
       '((nil    . (telephone-line-misc-info-segment))
         (accent . (telephone-line-major-mode-segment))
         (evil   . (telephone-line-airline-position-segment))))
-)
+  )
+
+(use-package sublimity
+  :ensure t
+  :config
+  (sublimity-mode 1)
+  (require 'sublimity-scroll)
+  ;;(require 'sublimity-map) ;; experimental
+  ;; (require 'sublimity-attractive)
+  )
+
+(use-package beacon
+  :ensure t
+  :config
+  (beacon-mode 1)
+  (setq beacon-size 20)
+  (setq beacon-color "#ba1010")
+  (setq beacon-blink-duration 0.5)
+  (setq beacon-blink-when-window-scrolls t)
+  (setq beacon-blink-when-window-changes t)
+  (setq beacon-blink-when-point-moves-horizontally nil)
+  (setq beacon-blink-when-point-moves-vertically 10)
+  )
+
+
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
