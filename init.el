@@ -1,7 +1,8 @@
 
 
 
-(setq debug-on-error t)
+
+;; (setq debug-on-error nil)
 
 ;; Minimal UI
 (scroll-bar-mode -1)
@@ -251,7 +252,6 @@
   (setq beacon-blink-when-point-moves-horizontally nil)
   (setq beacon-blink-when-point-moves-vertically 10)
   )
-
 
 
 (setq custom-file "~/.emacs.d/custom.el")
