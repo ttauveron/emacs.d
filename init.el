@@ -1,7 +1,3 @@
-
-
-
-
 ;; (setq debug-on-error nil)
 
 ;; Minimal UI
@@ -81,7 +77,7 @@
   helm-imenu-fuzzy-match t
   helm-completion-in-region-fuzzy-match t
   helm-candidate-number-list 150
-  helm-split-window-in-side-p t
+  helm-split-window-inside-p t
   helm-move-to-line-cycle-in-source t
   helm-display-header-line t
   helm-echo-input-in-header-line nil
@@ -253,6 +249,15 @@
   (setq beacon-blink-when-point-moves-vertically 10)
   )
 
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . gfm-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command
+	      "pandoc -f markdown -t html -s --mathjax --highlight-style=pygments")
+  )
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
