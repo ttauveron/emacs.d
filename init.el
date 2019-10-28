@@ -261,5 +261,19 @@
 	      "pandoc -f markdown -t html -s --mathjax --highlight-style=pygments")
   )
 
+(use-package py-autopep8
+  :ensure t
+  )
+
+(use-package elpy
+  :ensure t
+  :init
+  (elpy-enable)
+  (when (require 'flycheck nil t)
+    (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+    (add-hook 'elpy-mode-hook 'flycheck-mode))
+  (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+  )
+
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
