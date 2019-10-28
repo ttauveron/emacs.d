@@ -21,6 +21,8 @@
   (global-unset-key (kbd "C-z"))
   )
 
+;; backup in one place. flat, no tree structure
+(setq backup-directory-alist '(("" . "~/.emacs.d/backup")))
 
 ;; Package configs
 (require 'package)
