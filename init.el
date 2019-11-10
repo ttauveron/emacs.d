@@ -16,6 +16,9 @@
 (set-cursor-color "#c90e30")
 (setq-default cursor-type 'bar)
 
+;; change all prompts to y or n
+(fset 'yes-or-no-p 'y-or-n-p)
+
 ;; don't allow suspending emacs shortcut in GUI mode
 (when (display-graphic-p)
   (global-unset-key (kbd "C-z"))
