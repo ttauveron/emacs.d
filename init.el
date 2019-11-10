@@ -109,7 +109,14 @@
 
 
 (use-package undo-tree
-  :ensure t)
+  :ensure t
+  :config 
+    ;;turn on everywhere
+    (global-undo-tree-mode 1)
+    (global-set-key (kbd "C-_") 'undo)
+    (defalias 'redo 'undo-tree-redo)
+    (global-set-key (kbd "M-_") 'redo)
+  )
 
 (use-package magit
   :ensure t
