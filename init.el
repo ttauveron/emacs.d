@@ -196,7 +196,11 @@
   )
 
 (use-package groovy-mode
-  :ensure t)
+  :ensure t
+  :config
+  (setq indent-tabs-mode nil)
+  (setq groovy-indent-offset 2)
+  )
 
 (use-package yaml-mode
   :ensure t)
