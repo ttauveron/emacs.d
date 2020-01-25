@@ -84,6 +84,14 @@
 ;; show the other parenthesis
 (show-paren-mode)
 
+;; Highlight tabulations
+(setq-default highlight-tabs t)
+;; Show trailing white spaces
+(setq-default show-trailing-whitespace t)
+;; Remove useless whitespace before saving a file
+(add-hook 'before-save-hook 'whitespace-cleanup)
+(add-hook 'before-save-hook (lambda() (delete-trailing-whitespace)))
+
 ;; Highlight current line
 (global-hl-line-mode t)
 
