@@ -331,5 +331,14 @@
   (global-smart-shift-mode 1)
  )
 
+(use-package highlight-indentation
+  :ensure t
+  :after yaml-mode
+  :hook (yaml-mode . highlight-indentation-mode)
+  :config
+  (set-face-background 'highlight-indentation-face "#222527")
+  (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+  )
+
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
