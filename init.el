@@ -339,9 +339,11 @@
   :hook (yaml-mode . yafolding-mode)
   )
 
-(define-key yafolding-mode-map (kbd "C-c c") 'yafolding-toggle-all)
+(define-key yafolding-mode-map (kbd "C-c C-f") 'yafolding-toggle-all)
 ;(define-key yafolding-mode-map (kbd "C-c v") 'yafolding-hide-parent-element)
-(define-key yafolding-mode-map (kbd "C-c C-c") 'yafolding-toggle-element)
+(define-key yafolding-mode-map (kbd "C-c f") 'yafolding-toggle-element)
+
+(define-key yaml-mode-map (kbd "C-c C-c") 'comment-line)
 
 (use-package highlight-indentation
   :ensure t
