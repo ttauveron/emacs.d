@@ -1,8 +1,12 @@
 ;; (setq debug-on-error nil)
 
 ;; Minimal UI
-(scroll-bar-mode -1)
-(tool-bar-mode   -1)
+(if (display-graphic-p)
+    (progn
+      (tool-bar-mode -1)
+      (scroll-bar-mode -1)))
+;;(scroll-bar-mode -1)
+;(tool-bar-mode   -1)
 (tooltip-mode    -1)
 (menu-bar-mode   -1)
 (global-linum-mode t)
@@ -49,14 +53,14 @@
   (interactive
    (if mark-active (list (region-beginning) (region-end))
      (list (line-beginning-position)
-           (line-beginning-position 2)))))
+	   (line-beginning-position 2)))))
 
 ;; Package configs
 (require 'package)
 (setq package-enable-at-startup nil)
 (setq package-archives '(("org"   . "http://orgmode.org/elpa/")
-                         ("gnu"   . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")))
+			 ("gnu"   . "http://elpa.gnu.org/packages/")
+			 ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 
 ;; Bootstrap `use-package`
@@ -134,7 +138,7 @@
 
 (use-package undo-tree
   :ensure t
-  :config 
+  :config
     ;;turn on everywhere
     (global-undo-tree-mode 1)
     (global-set-key (kbd "C-_") 'undo)
@@ -174,7 +178,7 @@
   ;; If this value is t, split window inside the current window
    (setq helm-swoop-split-with-multiple-windows t)
   )
-	
+
 (use-package docker-tramp
   :ensure t)
 
@@ -186,10 +190,10 @@
   :ensure t
   :config
   (add-hook 'dockerfile-mode-hook
-            (lambda ()
-              (interactive)
-              (fci-mode t)
-              (set-fill-column 80)))
+	    (lambda ()
+	      (interactive)
+	      (fci-mode t)
+	      (set-fill-column 80)))
   )
 
 (use-package docker-compose-mode
@@ -253,7 +257,7 @@
   :ensure t
   :config
   (setq dashboard-items '((recents  . 10)
-                            (bookmarks . 10)))
+			    (bookmarks . 10)))
   (dashboard-setup-startup-hook)
   )
 
@@ -264,15 +268,15 @@
   (telephone-line-mode 1)
   (setq telephone-line-lhs
       '((evil   . (telephone-line-evil-tag-segment))
-        (accent . (telephone-line-vc-segment
-                   telephone-line-erc-modified-channels-segment
-                   telephone-line-process-segment))
-        (nil    . (telephone-line-minor-mode-segment
-                   telephone-line-buffer-segment))))
+	(accent . (telephone-line-vc-segment
+		   telephone-line-erc-modified-channels-segment
+		   telephone-line-process-segment))
+	(nil    . (telephone-line-minor-mode-segment
+		   telephone-line-buffer-segment))))
   (setq telephone-line-rhs
       '((nil    . (telephone-line-misc-info-segment))
-        (accent . (telephone-line-major-mode-segment))
-        (evil   . (telephone-line-airline-position-segment))))
+	(accent . (telephone-line-major-mode-segment))
+	(evil   . (telephone-line-airline-position-segment))))
   )
 
 (use-package sublimity
@@ -301,8 +305,8 @@
   :ensure t
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
-         ("\\.md\\'" . gfm-mode)
-         ("\\.markdown\\'" . markdown-mode))
+	 ("\\.md\\'" . gfm-mode)
+	 ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command
 	      "pandoc -f markdown -t html -s --mathjax --highlight-style=pygments")
   )
@@ -320,6 +324,12 @@
     (add-hook 'elpy-mode-hook 'flycheck-mode))
   (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
   )
+
+(use-package smart-shift
+  :ensure t
+  :init
+  (global-smart-shift-mode 1)
+ )
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
