@@ -331,6 +331,16 @@
   :hook (yaml-mode . smart-shift-mode)
  )
 
+(use-package yafolding
+  :ensure t
+  :after yaml-mode
+  :hook (yaml-mode . yafolding-mode)
+  )
+
+(define-key yafolding-mode-map (kbd "C-c c") 'yafolding-toggle-all)
+;(define-key yafolding-mode-map (kbd "C-c v") 'yafolding-hide-parent-element)
+(define-key yafolding-mode-map (kbd "C-c C-c") 'yafolding-toggle-element)
+
 (use-package highlight-indentation
   :ensure t
   :after yaml-mode
