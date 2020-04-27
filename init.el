@@ -94,7 +94,9 @@
 (setq-default show-trailing-whitespace t)
 ;; Remove useless whitespace before saving a file
 (add-hook 'before-save-hook 'whitespace-cleanup)
-(add-hook 'before-save-hook (lambda() (delete-trailing-whitespace)))
+(add-hook 'before-save-hook (lambda()
+			      (yafolding-show-all)
+			      (delete-trailing-whitespace)))
 
 ;; Highlight current line
 (global-hl-line-mode t)
