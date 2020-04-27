@@ -327,8 +327,8 @@
 
 (use-package smart-shift
   :ensure t
-  :init
-  (global-smart-shift-mode 1)
+  :after yaml-mode
+  :hook (yaml-mode . smart-shift-mode)
  )
 
 (use-package highlight-indentation
